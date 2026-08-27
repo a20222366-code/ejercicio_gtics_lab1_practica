@@ -22,6 +22,8 @@
         <th>Dueño</th>
         <th>Teléfono</th>
         <th>Estado</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
     </tr>
     </thead>
 
@@ -38,6 +40,19 @@
         <td th:text="${mascota.telefono}"></td>
 
         <td th:text="${mascota.estado ? 'Activo' : 'Inactivo'}"></td>
+
+        //botones de editar
+        <td>
+            <a th:href="@{/mascotas/editar/{id}(id=${mascota.id})}">
+                Editar
+            </a>
+        </td>
+
+        <td>
+            <a th:href="@{/mascotas/eliminar/{id}(id=${mascota.id})}">
+                Eliminar
+            </a>
+        </td>
 
     </tr>
 
