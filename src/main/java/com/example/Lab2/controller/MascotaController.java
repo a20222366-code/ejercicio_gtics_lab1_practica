@@ -23,6 +23,8 @@ public class MascotaController {
             @RequestParam(required = false) String criterio,
             @RequestParam(required = false) String valor,
             Model model) {
+        //Critero es el parametro de las opciones: buscar por nombre, edad, estado
+        //Valor es lo que ponemos en el buscador
 
         List<Mascota> mascotas;
 

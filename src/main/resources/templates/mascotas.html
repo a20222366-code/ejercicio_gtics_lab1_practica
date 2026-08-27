@@ -10,6 +10,46 @@
 
 <h1>Lista de Mascotas</h1>
 
+<!--Agregamos el buscador-->
+
+<!--th:action="@{/mascotas}"  = esto singifica cuando envíe este formulario, manda la petición a /mascotas-->
+<form th:action="@{/mascotas}" method="get">
+
+    <!--Campo donde escribiremos la busqueda-->
+    <input type="text"
+           name="valor"
+           placeholder="Ingrese búsqueda"
+           th:value="${valor}">
+
+    <!--Despliegue de las opciones para buscar-->
+    <select name="criterio">
+
+        <option value="nombre"
+                th:selected="${criterio == 'nombre'}">
+            Nombre
+        </option>
+
+        <option value="especie"
+                th:selected="${criterio == 'especie'}">
+            Especie
+        </option>
+
+        <option value="estado"
+                th:selected="${criterio == 'estado'}">
+            Estado
+        </option>
+
+    </select>
+
+    <button type="submit">Buscar</button>
+
+    <!--AL darle a limpiar vuelve a listar-->
+    <a th:href="@{/mascotas}">Limpiar</a>
+
+</form>
+
+<br>
+
 <table border="1">
 
     <thead>
