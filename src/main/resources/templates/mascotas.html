@@ -31,6 +31,7 @@
 
     <tr th:each="mascota : ${mascotas}">
 
+        <!--mostramos los datos que queremos-->
         <td th:text="${mascota.id}"></td>
         <td th:text="${mascota.nombre}"></td>
         <td th:text="${mascota.especie}"></td>
@@ -41,7 +42,7 @@
 
         <td th:text="${mascota.estado ? 'Activo' : 'Inactivo'}"></td>
 
-        //botones de editar
+        <!--botones de editar-->
         <td>
             <a th:href="@{/mascotas/editar/{id}(id=${mascota.id})}">
                 Editar
