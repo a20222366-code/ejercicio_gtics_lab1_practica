@@ -5,6 +5,8 @@ import com.example.Lab2.repository.MascotaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -61,4 +63,32 @@ public class MascotaController {
 
         return "mascotas";
     }
+
+    //Mostrar formulario
+    @GetMapping("/mascotas/nueva")
+    public String mostrarFormulario(Model model) {
+
+        model.addAttribute("mascota", new Mascota());
+
+        return "nueva-mascota";
+    }
+
+    //Guardamos mascota
+    @PostMapping("/mascotas/guardar")
+    public String guardarMascota(@ModelAttribute Mascota mascota) {
+
+        //@ModelAttribute Mascota mascota significa: Toma los datos que vienen de la petición y mételos dentro de un objeto Mascota
+
+        mascotaRepository.save(mascota);
+
+
+        //Después de guardar la mascota mandamos nuevamente a /mascotas
+        return "redirect:/mascotas";
+    }
+
+
+
+
+
+
 }
