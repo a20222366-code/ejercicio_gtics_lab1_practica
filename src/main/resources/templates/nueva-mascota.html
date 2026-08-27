@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--Este es un documento HTML, está en español y voy a utilizar el prefijo th: para las instrucciones de Thymeleaf--->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Mascota</title>
+</head>
+
+<body>
+
+<h1>Registrar Mascota</h1>
+
+<form th:action="@{/mascotas/guardar}"
+      th:object="${mascota}"
+      method="post">
+
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}">
+    <br><br>
+
+    <label>Especie:</label>
+    <input type="text" th:field="*{especie}">
+    <br><br>
+
+    <label>Raza:</label>
+    <input type="text" th:field="*{raza}">
+    <!--th:field="*{nombre}" Le dice a Thymeleaf: Este campo del formulario está conectado con la propiedad nombre del objeto que estoy usando en el formulario-->
+    <!--El *{nombre} significa: "Busca nombre dentro del objeto que está asociado a este formulario."-->
+    <br><br>
+
+    <label>Edad:</label>
+    <input type="number" th:field="*{edad}">
+    <br><br>
+
+    <label>Nombre del dueño:</label>
+    <input type="text" th:field="*{nombreDueno}">
+    <br><br>
+
+    <label>Teléfono:</label>
+    <input type="text" th:field="*{telefono}">
+    <br><br>
+
+    <label>Estado:</label>
+    <select th:field="*{estado}">
+        <option value="true">Activo</option>
+        <option value="false">Inactivo</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Registrar</button>
+
+    <a th:href="@{/mascotas}">Cancelar</a>
+
+</form>
+
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Este es un documento HTML, está en español y voy a utilizar el prefijo th: para las instrucciones de Thymeleaf--->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -9,6 +10,46 @@
 <body>
 
 <h1>Lista de Mascotas</h1>
+
+<!--Agregamos el buscador-->
+
+<!--th:action="@{/mascotas}"  = esto significa cuando envíe este formulario, manda la petición a /mascotas-->
+<form th:action="@{/mascotas}" method="get">
+
+    <!--Campo donde escribiremos la busqueda-->
+    <input type="text"
+           name="valor"
+           placeholder="Ingrese búsqueda"
+           th:value="${valor}">
+
+    <!--Despliegue de las opciones para buscar-->
+    <select name="criterio">
+
+        <option value="nombre"
+                th:selected="${criterio == 'nombre'}">
+            Nombre
+        </option>
+
+        <option value="especie"
+                th:selected="${criterio == 'especie'}">
+            Especie
+        </option>
+
+        <option value="estado"
+                th:selected="${criterio == 'estado'}">
+            Estado
+        </option>
+
+    </select>
+
+    <button type="submit">Buscar</button>
+
+    <!--AL darle a limpiar vuelve a listar-->
+    <a th:href="@{/mascotas}">Limpiar</a>
+
+</form>
+
+<br>
 
 <table border="1">
 
@@ -22,6 +63,8 @@
         <th>Dueño</th>
         <th>Teléfono</th>
         <th>Estado</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
     </tr>
     </thead>
 
@@ -29,6 +72,7 @@
 
     <tr th:each="mascota : ${mascotas}">
 
+        <!--mostramos los datos que queremos-->
         <td th:text="${mascota.id}"></td>
         <td th:text="${mascota.nombre}"></td>
         <td th:text="${mascota.especie}"></td>
@@ -38,6 +82,19 @@
         <td th:text="${mascota.telefono}"></td>
 
         <td th:text="${mascota.estado ? 'Activo' : 'Inactivo'}"></td>
+
+        <!--botones de editar-->
+        <td>
+            <a th:href="@{/mascotas/editar/{id}(id=${mascota.id})}">
+                Editar
+            </a>
+        </td>
+
+        <td>
+            <a th:href="@{/mascotas/eliminar/{id}(id=${mascota.id})}">
+                Eliminar
+            </a>
+        </td>
 
     </tr>
 
