@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Mascotas</title>
+</head>
+
+<body>
+
+<h1>Lista de Mascotas</h1>
+
+<table border="1">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Especie</th>
+        <th>Raza</th>
+        <th>Edad</th>
+        <th>Dueño</th>
+        <th>Teléfono</th>
+        <th>Estado</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="mascota : ${mascotas}">
+
+        <td th:text="${mascota.id}"></td>
+        <td th:text="${mascota.nombre}"></td>
+        <td th:text="${mascota.especie}"></td>
+        <td th:text="${mascota.raza}"></td>
+        <td th:text="${mascota.edad}"></td>
+        <td th:text="${mascota.nombreDueno}"></td>
+        <td th:text="${mascota.telefono}"></td>
+
+        <td th:text="${mascota.estado ? 'Activo' : 'Inactivo'}"></td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+
+</html>
