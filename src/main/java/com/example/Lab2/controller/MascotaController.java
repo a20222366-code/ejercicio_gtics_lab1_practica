@@ -125,6 +125,15 @@ public class MascotaController {
         return "reporte-mascotas";
     }
 
+    //Eliminamos una mascota
+    @GetMapping("/mascotas/eliminar/{id}")
+    public String eliminarMascota(@PathVariable Long id) {
+
+        mascotaRepository.deleteById(id);
+
+        return "redirect:/mascotas";
+    }
+
 
 
 
