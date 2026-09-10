@@ -41,5 +41,23 @@ public interface MascotaRepository extends JpaRepository<Mascota, Long> {
             @Param("estado") Boolean estado
     );
 
+    //Parte de reportes
+
+    //Query para obtener la edad máxima
+    @Query("SELECT MAX(m.edad) FROM Mascota m")
+    Integer obtenerEdadMaxima();
+
+    //Query para obtener la edad mínima
+    @Query("SELECT MIN(m.edad) FROM Mascota m")
+    Integer obtenerEdadMinima();
+
+    //Query para obtener la edad promedio
+    @Query("SELECT AVG(m.edad) FROM Mascota m")
+    Double obtenerEdadPromedio();
+
+    //Query para obtener la cantidad total de mascotas
+    @Query("SELECT COUNT(m) FROM Mascota m")
+    Long obtenerCantidadMascotas();
+
 
 }

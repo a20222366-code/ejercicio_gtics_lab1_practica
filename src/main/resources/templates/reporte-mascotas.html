@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Mascotas</title>
+</head>
+
+<body>
+
+<h1>Reporte general de mascotas</h1>
+
+<table border="1">
+
+    <tr>
+        <th>Indicador</th>
+        <th>Valor</th>
+    </tr>
+
+    <tr>
+        <td>Edad máxima</td>
+        <td th:text="${edadMaxima}"></td>
+    </tr>
+
+    <tr>
+        <td>Edad mínima</td>
+        <td th:text="${edadMinima}"></td>
+    </tr>
+
+    <tr>
+        <td>Edad promedio</td>
+        <!--Hace que los valores numéricos se muestren con dos cifras decimales cuando corresponda--->
+        <td th:text="${#numbers.formatDecimal(edadPromedio, 1, 2)}"></td>
+    </tr>
+
+    <tr>
+        <td>Total de mascotas</td>
+        <td th:text="${cantidadMascotas}"></td>
+    </tr>
+
+</table>
+
+<br>
+
+<a th:href="@{/mascotas}">
+    Volver a la lista
+</a>
+
+</body>
+
+</html>

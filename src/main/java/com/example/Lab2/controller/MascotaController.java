@@ -113,6 +113,18 @@ public class MascotaController {
         return "redirect:/mascotas";
     }
 
+    //Mostramos reporte general
+    @GetMapping("/mascotas/reporte")
+    public String mostrarReporte(Model model) {
+
+        model.addAttribute("edadMaxima", mascotaRepository.obtenerEdadMaxima());
+        model.addAttribute("edadMinima", mascotaRepository.obtenerEdadMinima());
+        model.addAttribute("edadPromedio", mascotaRepository.obtenerEdadPromedio());
+        model.addAttribute("cantidadMascotas", mascotaRepository.obtenerCantidadMascotas());
+
+        return "reporte-mascotas";
+    }
+
 
 
 
