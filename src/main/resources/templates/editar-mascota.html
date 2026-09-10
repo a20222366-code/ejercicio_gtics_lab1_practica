@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Mascota</title>
+</head>
+
+<body>
+
+<h1>Editar Mascota</h1>
+
+<form th:action="@{/mascotas/actualizar}"
+      th:object="${mascota}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}">
+    <br><br>
+
+    <label>Especie:</label>
+    <input type="text" th:field="*{especie}">
+    <br><br>
+
+    <label>Raza:</label>
+    <input type="text" th:field="*{raza}">
+    <br><br>
+
+    <label>Edad:</label>
+    <input type="number" th:field="*{edad}">
+    <br><br>
+
+    <label>Nombre del dueño:</label>
+    <input type="text" th:field="*{nombreDueno}">
+    <br><br>
+
+    <label>Teléfono:</label>
+    <input type="text" th:field="*{telefono}">
+    <br><br>
+
+    <label>Estado:</label>
+    <select th:field="*{estado}">
+        <option th:value="true">Activo</option>
+        <option th:value="false">Inactivo</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Actualizar mascota</button>
+
+</form>
+
+<br>
+
+<a th:href="@{/mascotas}">Volver a la lista</a>
+
+</body>
+
+</html>

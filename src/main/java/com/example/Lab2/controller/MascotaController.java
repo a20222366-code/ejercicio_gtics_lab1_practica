@@ -4,10 +4,8 @@ import com.example.Lab2.entity.Mascota;
 import com.example.Lab2.repository.MascotaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -85,6 +83,36 @@ public class MascotaController {
         //Después de guardar la mascota mandamos nuevamente a /mascotas
         return "redirect:/mascotas";
     }
+
+    //Mostramos formulario de edición
+    @GetMapping("/mascotas/editar/{id}")
+    public String mostrarFormularioEdicion(@PathVariable Long id, Model model) {
+
+        Mascota mascota = mascotaRepository.findById(id).orElse(null);
+
+        model.addAttribute("mascota", mascota);
+
+        return "editar-mascota";
+    }
+    
+    //Actualizamos los datos de mascota
+    @PostMapping("/mascotas/actualizar")
+    public String actualizarMascota(@ModelAttribute Mascota mascota) {
+
+        mascotaRepository.actualizarMascota(
+                mascota.getId(),
+                mascota.getNombre(),
+                mascota.getEspecie(),
+                mascota.getRaza(),
+                mascota.getEdad(),
+                mascota.getNombreDueno(),
+                mascota.getTelefono(),
+                mascota.getEstado()
+        );
+
+        return "redirect:/mascotas";
+    }
+
 
 
 
